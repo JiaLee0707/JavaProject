@@ -14,7 +14,7 @@ public class yaho {
 		JPanel panel = new JPanel();
 		JLabel label = new JLabel("야호");
 		
-		JTextField tf = new JTextField("아이디를 입력하시오");
+		JTextField tf = new JTextField("아이디를 입력하세요");
 		tf.setText("야호");
 		label.setText(tf.getText());
 		
