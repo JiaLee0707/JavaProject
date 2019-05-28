@@ -1223,3 +1223,21 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 4 0 2019-05-28 19:17:19.848
+!MESSAGE C:\java\2학년\방과후B_JavaProject\.git\index.lock (다른 프로세스가 파일을 사용 중이기 때문에 프로세스가 액세스 할 수 없습니다)
+!STACK 0
+java.io.FileNotFoundException: C:\java\2학년\방과후B_JavaProject\.git\index.lock (다른 프로세스가 파일을 사용 중이기 때문에 프로세스가 액세스 할 수 없습니다)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jgit.internal.storage.file.LockFile.lock(LockFile.java:168)
+	at org.eclipse.jgit.dircache.DirCache.lock(DirCache.java:610)
+	at org.eclipse.jgit.dircache.DirCache.lock(DirCache.java:251)
+	at org.eclipse.jgit.dircache.DirCache.lock(DirCache.java:329)
+	at org.eclipse.jgit.dircache.DirCache.lock(DirCache.java:295)
+	at org.eclipse.jgit.lib.Repository.lockDirCache(Repository.java:1282)
+	at org.eclipse.jgit.api.RmCommand.call(RmCommand.java:158)
+	at org.eclipse.egit.ui.internal.staging.StagingView$54.run(StagingView.java:3447)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
