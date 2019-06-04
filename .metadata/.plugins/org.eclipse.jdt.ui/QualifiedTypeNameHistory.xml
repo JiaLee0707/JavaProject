@@ -6,4 +6,6 @@
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="javax.swing.ButtonGroup"/>
 <fullyQualifiedTypeName name="java.awt.Image"/>
+<fullyQualifiedTypeName name="java.awt.Desktop.Action"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 </qualifiedTypeNameHistroy>
