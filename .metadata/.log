@@ -1355,3 +1355,73 @@ Caused by: java.net.UnknownHostException: github.com
 
 !ENTRY org.eclipse.egit.ui 4 0 2019-06-04 19:17:34.925
 !MESSAGE Can't connect to any repository: https://github.com/JiaLee0707/JavaProject.git (https://github.com/JiaLee0707/JavaProject.git: cannot open git-receive-pack)
+
+!ENTRY org.eclipse.egit.core 4 0 2019-06-04 19:50:21.657
+!MESSAGE An exception occurred during push on URI https://github.com/JiaLee0707/JavaProject.git: https://github.com/JiaLee0707/JavaProject.git: Read timed out after 300,000 ms
+!STACK 0
+org.eclipse.jgit.api.errors.TransportException: https://github.com/JiaLee0707/JavaProject.git: Read timed out after 300,000 ms
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:180)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:217)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:86)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.TransportException: https://github.com/JiaLee0707/JavaProject.git: Read timed out after 300,000 ms
+	at org.eclipse.jgit.transport.BasePackPushConnection.doPush(BasePackPushConnection.java:239)
+	at org.eclipse.jgit.transport.TransportHttp$SmartHttpPushConnection.doPush(TransportHttp.java:1113)
+	at org.eclipse.jgit.transport.BasePackPushConnection.push(BasePackPushConnection.java:170)
+	at org.eclipse.jgit.transport.PushProcess.execute(PushProcess.java:172)
+	at org.eclipse.jgit.transport.Transport.push(Transport.java:1346)
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:170)
+	... 4 more
+Caused by: java.io.InterruptedIOException: Read timed out after 300,000 ms
+	at org.eclipse.jgit.util.io.TimeoutInputStream.readTimedOut(TimeoutInputStream.java:153)
+	at org.eclipse.jgit.util.io.TimeoutInputStream.read(TimeoutInputStream.java:125)
+	at org.eclipse.jgit.util.IO.readFully(IO.java:233)
+	at org.eclipse.jgit.transport.PacketLineIn.readLength(PacketLineIn.java:238)
+	at org.eclipse.jgit.transport.SideBandInputStream.needDataPacket(SideBandInputStream.java:157)
+	at org.eclipse.jgit.transport.SideBandInputStream.read(SideBandInputStream.java:139)
+	at org.eclipse.jgit.util.IO.readFully(IO.java:233)
+	at org.eclipse.jgit.transport.PacketLineIn.readLength(PacketLineIn.java:238)
+	at org.eclipse.jgit.transport.PacketLineIn.readString(PacketLineIn.java:164)
+	at org.eclipse.jgit.transport.BasePackPushConnection.readStringLongTimeout(BasePackPushConnection.java:438)
+	at org.eclipse.jgit.transport.BasePackPushConnection.readStatusReport(BasePackPushConnection.java:370)
+	at org.eclipse.jgit.transport.BasePackPushConnection.doPush(BasePackPushConnection.java:222)
+	... 9 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2019-06-04 19:50:21.662
+!MESSAGE Can't connect to any repository: https://github.com/JiaLee0707/JavaProject.git (https://github.com/JiaLee0707/JavaProject.git: Read timed out after 300,000 ms)
+
+!ENTRY org.eclipse.egit.core 4 0 2019-06-04 19:54:41.367
+!MESSAGE An exception occurred during push on URI https://github.com/JiaLee0707/JavaProject.git: https://github.com/JiaLee0707/JavaProject.git: Read timed out after 300,000 ms
+!STACK 0
+org.eclipse.jgit.api.errors.TransportException: https://github.com/JiaLee0707/JavaProject.git: Read timed out after 300,000 ms
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:180)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:217)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:86)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.TransportException: https://github.com/JiaLee0707/JavaProject.git: Read timed out after 300,000 ms
+	at org.eclipse.jgit.transport.BasePackPushConnection.doPush(BasePackPushConnection.java:239)
+	at org.eclipse.jgit.transport.TransportHttp$SmartHttpPushConnection.doPush(TransportHttp.java:1113)
+	at org.eclipse.jgit.transport.BasePackPushConnection.push(BasePackPushConnection.java:170)
+	at org.eclipse.jgit.transport.PushProcess.execute(PushProcess.java:172)
+	at org.eclipse.jgit.transport.Transport.push(Transport.java:1346)
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:170)
+	... 4 more
+Caused by: java.io.InterruptedIOException: Read timed out after 300,000 ms
+	at org.eclipse.jgit.util.io.TimeoutInputStream.readTimedOut(TimeoutInputStream.java:153)
+	at org.eclipse.jgit.util.io.TimeoutInputStream.read(TimeoutInputStream.java:125)
+	at org.eclipse.jgit.util.IO.readFully(IO.java:233)
+	at org.eclipse.jgit.transport.PacketLineIn.readLength(PacketLineIn.java:238)
+	at org.eclipse.jgit.transport.SideBandInputStream.needDataPacket(SideBandInputStream.java:157)
+	at org.eclipse.jgit.transport.SideBandInputStream.read(SideBandInputStream.java:139)
+	at org.eclipse.jgit.util.IO.readFully(IO.java:233)
+	at org.eclipse.jgit.transport.PacketLineIn.readLength(PacketLineIn.java:238)
+	at org.eclipse.jgit.transport.PacketLineIn.readString(PacketLineIn.java:164)
+	at org.eclipse.jgit.transport.BasePackPushConnection.readStringLongTimeout(BasePackPushConnection.java:438)
+	at org.eclipse.jgit.transport.BasePackPushConnection.readStatusReport(BasePackPushConnection.java:370)
+	at org.eclipse.jgit.transport.BasePackPushConnection.doPush(BasePackPushConnection.java:222)
+	... 9 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2019-06-04 19:54:41.371
+!MESSAGE Can't connect to any repository: https://github.com/JiaLee0707/JavaProject.git (https://github.com/JiaLee0707/JavaProject.git: Read timed out after 300,000 ms)
