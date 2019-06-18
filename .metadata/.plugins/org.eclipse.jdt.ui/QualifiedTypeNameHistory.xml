@@ -8,4 +8,5 @@
 <fullyQualifiedTypeName name="java.awt.Image"/>
 <fullyQualifiedTypeName name="java.awt.Desktop.Action"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="java.awt.event.FocusListener"/>
 </qualifiedTypeNameHistroy>
