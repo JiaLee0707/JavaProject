@@ -12,16 +12,21 @@ import javax.swing.JPanel;
 
 public class test{
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("창이름");
+		JFrame frame = new JFrame("심리테스트");
 		JPanel panel = new JPanel();
 		JPanel panel2 = new JPanel();
-		JPanel panel3 = new JPanel();
+		JPanel test1 = new JPanel();	
+		//JPanel test3 = new JPanel();
+		JPanel test1_1 = new JPanel();
 		frame.setPreferredSize(new Dimension(2000,1000));
 
 		//FlowLayout
 		panel.setLayout(new BorderLayout());
 		panel2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 25));
-		panel3.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 20));
+		test1.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 20));
+		//test3.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 20));
+		
+		test1_1.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 20));
 
 		//버튼 가로 450, 세로 350 30씩 떨어트림, 밑으로 25 떨어트림
 		//결과 가로 1472,세로 600	
@@ -43,22 +48,70 @@ public class test{
 		
 		//심리테스트1
 		ImageIcon A = new ImageIcon("src/image/A.PNG");
+		ImageIcon B = new ImageIcon("src/image/B.PNG");
+		ImageIcon C = new ImageIcon("src/image/C.PNG");
+		ImageIcon D = new ImageIcon("src/image/D.PNG");
 		
 		JButton AButton = new JButton(A);
+		JButton BButton = new JButton(B);
+		JButton CButton = new JButton(C);
+		JButton DButton = new JButton(D);
 		
-		ActionListener listener = new ActionListener() {
+
+		ActionListener Test1Listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == imageButton1) {//setVisible, CardLayout
-
+					test1.setVisible(true);
 				}
 			}
 		};
-		imageButton1.addActionListener(listener);
+		imageButton1.addActionListener(Test1Listener);
+
+		
+		//심리테스트1 정답
+		ImageIcon A_A = new ImageIcon("src/image/A_A.jpg");
+		ImageIcon B_B = new ImageIcon("src/image/B_B.jpg");
+		ImageIcon C_C = new ImageIcon("src/image/C_C.jpg");
+		ImageIcon D_D = new ImageIcon("src/image/D_D.jpg");
+		
+		JButton A_AButton = new JButton(A_A);
+		JButton B_BButton = new JButton(B_B);
+		JButton C_CButton = new JButton(C_C);
+		JButton D_DButton = new JButton(D_D);
+		
+		ActionListener Test1_1Listener = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == AButton) {
+					test1.setVisible(false);
+					
+					//A_AButton.setVisible(true);	
+				}
+				
+			}
+		};
+		A_AButton.addActionListener(Test1_1Listener);
+		
+
 		
 		panel.add(panel2, BorderLayout.NORTH);
-		panel.add(panel3, BorderLayout.SOUTH);
-		panel3.add(AButton);
+		panel.add(test1, BorderLayout.SOUTH);
+		//panel.add(test1_1, BorderLayout.SOUTH);
+		//test1
+		test1.add(AButton);
+		test1.add(BButton);
+		test1.add(CButton);
+		test1.add(DButton);
+		test1.setVisible(false);
+		test1_1.add(A_AButton);
+		test1_1.add(B_BButton);
+		test1_1.add(C_CButton);
+		test1_1.add(D_DButton);
+		test1_1.setVisible(false);
+		
+		
 		panel2.add(imageButton1);
 		panel2.add(imageButton2);
 		panel2.add(imageButton3);
