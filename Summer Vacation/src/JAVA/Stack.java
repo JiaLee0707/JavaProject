@@ -1,4 +1,4 @@
-package JAVA_0723;
+package JAVA;
 
 interface Stack {
 	public int length();

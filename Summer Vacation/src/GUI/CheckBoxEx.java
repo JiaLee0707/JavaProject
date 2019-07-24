@@ -1,4 +1,4 @@
-package JAVA_0722;
+package GUI;
 import javax.swing.*;
 import java.awt.*;
 public class CheckBoxEx extends JFrame {

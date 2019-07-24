@@ -1,4 +1,4 @@
-package JAVA_0722;
+package GUI;
 import java.awt.*;
 import java.awt.event.*;
 

@@ -1,4 +1,4 @@
-package JAVA_0723;
+package JAVA;
 
 import java.util.*;
 

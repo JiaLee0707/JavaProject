@@ -1,4 +1,4 @@
-package JAVA_0722;
+package JAVA;
 import java.util.*;
 
 public class Goods {

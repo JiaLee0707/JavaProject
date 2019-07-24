@@ -1,27 +1,35 @@
-package JAVA_0723;
+package JAVA;
 
 import java.util.*;
 
 public class StringStack implements Stack{
-	private String[] element; //스택의 저장 메모리
+	public String[] element = { null }; //스택의 저장 메모리
 	private int top; //index, top of stack
-	public StringStack(int capacity) {
+	
+	//public StringStack(int capacity) {
+	public void StringStack11(int capacity) {
 		element = new String[capacity];
 		top = -1;
 	}
 	public int length() { //현재 스택 저장 개수 리턴		
-		return top+1;
+		return top++;
 	}
 	public int capacity() { //전체 스택크기 리턴
 		return element.length;
 	}
 	public String pop() {
+		String s = null;
 		if(top > -1) {
+			s = element[top];
 			top--;
 		}
-		if(top == -1) //스택이 비었음
+		if(top == -1) {//스택이 비었음
 			System.out.println("stack underflow");
-		return "s";
+			return null;
+		}
+		return s;
+		
+		
 	}
 	public boolean push(String val) {
 		if(top == element.length-1) {
@@ -29,7 +37,8 @@ public class StringStack implements Stack{
 			return false;
 		}
 		else {
-			element[++top] = val;
+			length();
+			element[top] = val;
 			
 			return true;
 		}
