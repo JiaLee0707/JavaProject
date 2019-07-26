@@ -27,10 +27,10 @@ public class StudentSelect {
 				try {
 					conn.close();
 				}catch(SQLException sqle) {}
-			if(pstmt != null) 
+			/*if(pstmt != null) 
 				try {
-					pstmt.close();
-				}catch(SQLException sqle) {}
+					
+				}*/
 		}
 	}
 }

@@ -15,14 +15,14 @@ public class StudentUpdate {
 		String id=sc.next();
 		//System.out.println("변경하실 데이터의 항목를 고르시오. (name, dept, id) >>");
 		//String choice = sc.next();
-		System.out.println("학번을 어떻게 변경하시겠습니까? >> ");
+		System.out.println("어떤 학과로 변경하시겠습니까? >> ");
 		String change = sc.next();
 		
 		try {
 			Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 			conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/javap", "root", "mirim2"); //DB연결
 			System.out.println("DB 연결 완료");
-			String sql = "update student set id = ? where id = ?";
+			String sql = "update student set dept = ? where id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, change);
 			pstmt.setString(2, id);

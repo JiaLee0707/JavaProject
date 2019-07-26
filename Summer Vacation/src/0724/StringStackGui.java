@@ -8,8 +8,6 @@ import JAVA.*;
 
 public class StringStackGui extends JFrame {
 	Container contentPane;
-	Container Input;
-	Container print;
 	
 	TextField count = new TextField(5);
 	TextField val = new TextField(5);
@@ -21,11 +19,7 @@ public class StringStackGui extends JFrame {
 		setTitle("Stack GUI");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = getContentPane();
-		Input = getContentPane();
-		print = getContentPane();
-		contentPane.setLayout(new BorderLayout(0, 0));
-		Input.setLayout(new GridLayout(2, 2, 10, 5));
-		print.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
+		contentPane.setLayout(new FlowLayout());
 		
 		Label clabel = new Label("배열갯수");
 		JButton cBut = new JButton("입력");
@@ -40,24 +34,22 @@ public class StringStackGui extends JFrame {
 		printBut.addActionListener(new printActionListener());
 		
 		//배열갯수
-		Input.add(clabel);
-		Input.add(count);
-		Input.add(cBut);
+		contentPane.add(clabel);
+		contentPane.add(count);
+		contentPane.add(cBut);
 		//입력데이터
-		Input.add(slabel);
-		Input.add(val);
-		Input.add(sBut);
+		contentPane.add(slabel);
+		contentPane.add(val);
+		contentPane.add(sBut);
 		//출력
-		print.add(printBut);
-		print.add(stackList);
-				
-		contentPane.add(Input, BorderLayout.NORTH);		
-		contentPane.add(print, BorderLayout.CENTER);
+		contentPane.add(printBut);
+		contentPane.add(stackList);
+		
 		
 		setSize(300, 400);
 		setVisible(true);
 	}
-	//배열갯수
+	
 	class cActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -65,7 +57,7 @@ public class StringStackGui extends JFrame {
 			ss.StringStack11(c);
 		}
 	}
-	//입력데이터
+	
 	class dataActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -73,11 +65,11 @@ public class StringStackGui extends JFrame {
 			ss.push(str);
 		}
 	}
-	//list
+	
 	class printActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			for(int i=0; i<ss.capacity()-1; i++) {
+			for(int i=0; i<ss.capacity(); i++) {
 				stackList = new JList<String>(ss.element);
 				stackList.setListData(ss.element);
 				System.out.println(ss.element[i]);
