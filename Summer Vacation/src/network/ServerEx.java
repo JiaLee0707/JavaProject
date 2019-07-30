@@ -37,7 +37,7 @@ public class ServerEx {
 		} finally {
 			try {
 				sc.close(); // scanner 닫기
-				if(socket != null) socket.close(); // 통신용 소켓 닫기
+				socket.close(); // 통신용 소켓 닫기
 				listener.close(); // 서버 소켓 닫기
 			} catch (IOException e) {
 				System.out.println("클라이언트와 채팅 중 오류가 발생했습니다.");
