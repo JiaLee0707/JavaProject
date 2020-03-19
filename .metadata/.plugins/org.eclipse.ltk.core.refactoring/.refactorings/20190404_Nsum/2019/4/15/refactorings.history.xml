@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;private static void nSum(String number)&apos; from &apos;Nsum.main()&apos; to &apos;Nsum&apos;&#x0D;&#x0A;- Original project: &apos;20190404_Nsum&apos;&#x0D;&#x0A;- Method name: &apos;nSum&apos;&#x0D;&#x0A;- Destination type: &apos;Nsum&apos;&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" comments="false" description="Extract method &apos;nSum&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;{Nsum.java" name="nSum" replace="false" selection="226 258" stamp="1554804696231" version="1.0" visibility="2"/>
+</session>

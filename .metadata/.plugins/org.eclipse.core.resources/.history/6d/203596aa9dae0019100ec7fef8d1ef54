@@ -1,0 +1,11 @@
+package Stream;
+
+import java.*;
+
+public class FileRederEx {
+
+	public static void main(String[] args) {
+		FileReader in = null;
+	}
+
+}

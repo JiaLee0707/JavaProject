@@ -1,0 +1,189 @@
+package pro1;
+
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+import java.sql.*;
+
+public class reservation extends JFrame implements ActionListener{
+	static Scanner sc=new Scanner(System.in);
+	
+	Connection conn=null;
+	PreparedStatement pstmt = null;
+	
+	Container contentPane;
+	JPanel panel, panel2;
+	JRadioButton[] rb = new JRadioButton[6];
+	JComboBox<String> m,d,h,M;
+	JTextField NAME;
+	ImageIcon blue = new ImageIcon("src/pro1/image/하늘색.png");
+	ImageIcon SizeBlue = new ImageIcon(blue.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+//	ImageIcon blue = new ImageIcon(Cat.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+//	ImageIcon blue = new ImageIcon(Cat.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+	
+	reservation() {
+		try {
+			Class.forName("org.gjt.mm.mysql.Driver").newInstance();
+			conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/javap", "root", "mirim2"); //DB연결
+			System.out.println("DB 연결 완료");
+		}catch(SQLException ex) {
+			System.out.println("SQLException:" + ex);
+		}catch(Exception ex) {
+			System.out.println("Exception:" + ex);
+		}
+		
+		setTitle("자리예약 프로그램");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		panel = new JPanel();
+		panel2 = new JPanel();
+		panel2.setLayout(new GridLayout(2, 3, 5, 5));
+		contentPane = getContentPane();
+		contentPane.setLayout(new BorderLayout());
+		
+		m = new JComboBox<String>();
+		for(int i=0; i<12; i++) {
+			m.addItem(i+1 + "월");
+		}
+		d = new JComboBox<String>();
+		for(int i=0; i<31; i++) {
+			d.addItem(i+1 + "일");
+		}
+		h = new JComboBox<String>();
+		for(int i=0; i<24; i++) {
+			h.addItem(i+1 + "시");
+		}
+		M = new JComboBox<String>();
+		for(int i=0; i<59; i++) {
+			M.addItem(i+1 + "분");
+		}
+		
+		
+		ButtonGroup g = new ButtonGroup();
+		try {
+			String sql = "select * from reservation;";
+			pstmt = conn.prepareStatement(sql);
+			ResultSet srs = pstmt.executeQuery();
+			int i=0;
+			while(srs.next()) {
+				String Name = srs.getString("name");
+				String Num = srs.getString("num");
+				String Date = srs.getString("date");
+				if(!(Name==null && Date==null)) {
+					rb[i]=new JRadioButton((i+1)+":\n"+Name+"."+Date, new ImageIcon("src/pro1/image/빨간색.png"));
+				}else {
+					rb[i]=new JRadioButton((i+1)+" : 예약가능", SizeBlue);
+				}
+				rb[i].addActionListener(this);
+				rb[i].setBorderPainted(true);
+				g.add(rb[i]);
+				i++;
+			}
+		}catch(SQLException ex) {
+			System.out.println("SQLException:" + ex);
+		}catch(Exception ex) {
+			System.out.println("Exception:" + ex);
+		}
+		
+		NAME = new JTextField(6);
+		
+		
+		JButton r=new JButton("예약");
+		r.addActionListener(this);
+		JButton c=new JButton("취소");
+		c.addActionListener(this);
+		
+	
+		panel.add(NAME);
+		panel.add(m);
+		panel.add(d);
+		panel.add(h);
+		panel.add(M);
+		panel.add(r);
+		
+		for(int i=0; i<6; i++) {
+			panel2.add(rb[i]);
+		}
+		contentPane.add(panel, BorderLayout.NORTH);
+		contentPane.add(panel2, BorderLayout.CENTER);
+		
+		setSize(1100, 750);
+		setVisible(true);
+	}
+
+	
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		 JButton b = (JButton)e.getSource();
+		 String Mon, Date, Hour, Min, D;
+		 if (b.getText().equals("예약")) {
+			 Mon = m.getSelectedItem().toString();
+			 Date = d.getSelectedItem().toString();
+			 Hour = h.getSelectedItem().toString();
+			 Min = M.getSelectedItem().toString();
+			 D = "2019."+Mon+"."+Date+"-"+Hour+":"+Min;
+         }
+	}
+	
+	void reservation(String n) {
+		
+		System.out.println("예약자의 이름과 예약 날짜,시간을 입력하세요 >>");
+		String name=sc.next();
+		String date=sc.next();
+		
+		try {
+			String sql = "select * from reservation where name=null, date=null";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, date);
+			pstmt.setString(3, n);
+			pstmt.executeUpdate(); //실행시키는 거
+			
+			sql = "select * from reservation";
+			pstmt = conn.prepareStatement(sql);
+			ResultSet srs = pstmt.executeQuery();
+			while(srs.next()) {
+				System.out.print(srs.getString("name")+" ");
+				System.out.print(srs.getString("num")+" ");
+				System.out.print(srs.getString("date")+" ");
+				System.out.println();
+			}
+		}catch(SQLException ex) {
+			System.out.println("SQLException:" + ex);
+		}catch(Exception ex) {
+			System.out.println("Exception:" + ex);
+		}
+	}
+
+	void cancellation(String n) {
+		try {
+			String sql = "update reservation set name = null, date = null where num = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, n);
+			
+			pstmt.executeUpdate(); //실행시키는 거
+			
+			sql = "select * from reservation";
+			pstmt = conn.prepareStatement(sql);
+			ResultSet srs = pstmt.executeQuery();
+			while(srs.next()) {
+				System.out.print(srs.getString("name")+" ");
+				System.out.print(srs.getString("num")+" ");
+				System.out.print(srs.getString("date")+" ");
+				System.out.println();
+			}
+		}catch(SQLException ex) {
+			System.out.println("SQLException:" + ex);
+		}catch(Exception ex) {
+			System.out.println("Exception:" + ex);
+		}
+	}
+
+	public static void main(String[] args) {
+		reservation r=new reservation();
+	}
+
+}
